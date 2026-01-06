@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Solutions - Ceylon Apex Investments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #00BCD4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            color: #1e3a8a;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-subtitle {
+            color: #00BCD4;
+            font-size: 0.75rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3a8a;
+        }
+
+        .apply-btn {
+            background: #5B47E5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #4a38c4;
+        }
+
+        /* Hero Section - Cyan/Teal Theme */
+        .hero {
+            background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-icon {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.25rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+            gap: 2rem;                             /* increase gap */
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem 2.5rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: stretch;
+        }
+        
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem 2.5rem;
+            justify-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Feature Cards - Cyan Theme */
+        .feature-card {
+            background: #E0F2F1;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #00BCD4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-card-content {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            color: #00838F;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-card h3 {
+            color: #006064;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #00695C;
+        }
+
+        /* Detail Items */
+        .detail-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-icon {
+            background: #00BCD4;
+            padding: 0.75rem;
+            border-radius: 8px;
+            flex-shrink: 0;
+            height: fit-content;
+        }
+
+        .detail-item h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #666;
+        }
+
+        /* Image */
+        .section-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Why Choose Cards */
+        .why-card {
+            text-align: center;
+            background: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .why-icon {
+            background: #00BCD4;
+            color: white;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 4px 16px rgba(0,188,212,0.08);
+        }
+        .why-icon svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .why-card h3 {
+            color: #1e3a8a;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .why-card p {
+            color: #455a64;
+            font-size: 1.05rem;
+            margin-bottom: 0;
+            max-width: 320px;
+        }
+
+        /* Industry Cards */
+        .industry-card {
+            background: white;
+            padding: 1.5rem 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: box-shadow 0.3s;
+            min-width: 220px;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .industry-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+        }
+
+        .industry-card p {
+            color: #1e3a8a;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* Background Colors */
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        .bg-white {
+            background: white;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to bottom, #f9fafb, white);
+        }
+
+        /* SVG Icons */
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hero-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem 1.5rem;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 1.5rem 1.5rem;
+            }
+        }
+        @media (max-width: 900px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .why-card {
+                margin-bottom: 1.5rem;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr 1fr;
+                gap: 1.25rem 1.25rem;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .why-card {
+                margin-bottom: 1.25rem;
+            }
+            .why-icon {
+                width: 56px;
+                height: 56px;
+            }
+            .why-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+            .why-card h3 {
+                font-size: 1.1rem;
+            }
+            .why-card p {
+                font-size: 0.95rem;
+            }
+            .grid-4 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                justify-items: center;
+            }
+            .industry-card {
+                min-width: 0;
+                max-width: 100%;
+                width: 100%;
+                padding: 1.25rem 0.75rem;
+                margin: 0 auto;
+            }
+            .industry-card p {
+                font-size: 1.15rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">CA</div>
+                <div class="logo-text">
+                    <div class="logo-title">Ceylon Apex</div>
+                    <div class="logo-subtitle">Investments</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">About</a>
+                <a href="itSolution.html">IT Solutions</a>
+                <a href="index.html">Contact</a>
+            </nav>
+            <button class="apply-btn">Get Started</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">
+            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+        </div>
+        <h1>IT Solutions</h1>
+        <p>Comprehensive technology services to digitalize and transform your business. From software development to cloud solutions and cybersecurity.</p>
+    </section>
+
+    <!-- Our IT Services Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our IT Services</h2>
+                <p>End-to-end technology solutions for modern businesses</p>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Custom Software Development</h3>
+                            <p>Build tailored software solutions that perfectly fit your business needs. Web applications, mobile apps, and enterprise systems.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Cloud Solutions</h3>
+                            <p>Migrate to the cloud with confidence. Cloud hosting, migration services, and ongoing cloud infrastructure management.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Cybersecurity</h3>
+                            <p>Protect your business from digital threats. Security audits, penetration testing, and 24/7 security monitoring services.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Database Management</h3>
+                            <p>Optimize and manage your data effectively. Database design, optimization, backup solutions, and data analytics.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Stack Section -->
+    <section class="bg-white">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom: 3rem;">
+                <span style="display: block; color: #1e3a8a; font-size: 2.5rem;">Technology Stack</span>
+            </h2>
+
+            <div class="grid-2">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop" alt="Technology and development" class="section-image">
+                </div>
+
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Mobile Development</h3>
+                            <p>iOS and Android native apps, cross-platform solutions using React Native and Flutter</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Web Development</h3>
+                            <p>React, Angular, Vue.js, Node.js, Python, and modern web frameworks for scalable applications</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Backend Systems</h3>
+                            <p>Robust backend architecture with microservices, APIs, and scalable server infrastructure</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>DevOps & Automation</h3>
+                            <p>CI/CD pipelines, automated testing, container orchestration with Docker and Kubernetes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="bg-gradient">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+                <p>Your trusted technology partner</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>Experienced Team</h3>
+                    <p>Over 10 years of experience with certified professionals in latest technologies</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3>On-Time Delivery</h3>
+                    <p>Agile methodology ensuring projects delivered on time and within budget</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support and maintenance for all our solutions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries We Serve Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Industries We Serve</h2>
+                <p>Specialized solutions for various sectors</p>
+            </div>
+
+            <div class="grid-4">
+                <div class="industry-card">
+                    <p>Finance & Banking</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Healthcare</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>E-commerce</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Education</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Manufacturing</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Logistics</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Real Estate</p>
+                </div>
+
+                <div class="industry-card">
+                    <p>Hospitality</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.apply-btn').addEventListener('click', function() {
+            alert('IT Solutions consultation request will open here');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawning Services - Ceylon Apex Investments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #00BCD4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            color: #1e3a8a;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-subtitle {
+            color: #00BCD4;
+            font-size: 0.75rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3a8a;
+        }
+
+        .apply-btn {
+            background: #5B47E5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #4a38c4;
+        }
+
+        /* Hero Section - Purple Theme */
+        .hero {
+            background: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-icon {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.25rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+            gap: 2rem;                             /* increase gap */
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 2.5rem;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+        /* Feature Cards - Purple Theme */
+        .feature-card {
+            background: #F3E8FF;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #7C3AED;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-card-content {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            color: #6B21A8;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-card h3 {
+            color: #581C87;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #4C1D95;
+        }
+
+        /* What We Accept Cards */
+        .accept-card {
+            background: #fff;
+            padding: 2rem 2rem 1.5rem 2rem;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 320px;
+            transition: box-shadow 0.3s;
+        }
+
+        .accept-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .accept-icon {
+            background: #EDE9FE;
+            padding: 1rem;
+            border-radius: 16px;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .accept-icon svg {
+            color: #A78BFA;
+            width: 32px;
+            height: 32px;
+        }
+
+        .accept-card h3 {
+            color: #000000;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .accept-card p {
+            color: #000000;
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Detail Items */
+        .detail-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-icon {
+            background: #7C3AED;
+            padding: 0.75rem;
+            border-radius: 8px;
+            flex-shrink: 0;
+            height: fit-content;
+        }
+
+        .detail-item h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #666;
+        }
+
+        /* Image */
+        .section-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Step Cards */
+        .step-card {
+            text-align: center;
+        }
+
+        .step-number {
+            background: #7C3AED;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card h3 {
+            color: #1e3a8a;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-card p {
+            color: #666;
+        }
+
+        /* Background Colors */
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        .bg-white {
+            background: white;
+        }
+
+        .accept-section-bg {
+            background: linear-gradient(135deg, #F8F6FF 0%, #FFF7ED 100%);
+            padding: 4rem 0;
+        }
+
+        /* SVG Icons */
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hero-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="https://ucarecdn.com/4aa73b29-0572-4dbe-86c8-c9ab2ca26d53/-/format/auto/" alt="Ceylon Apex Investments">
+                <div class="logo-text">
+                    <div class="logo-title">Ceylon Apex</div>
+                    <div class="logo-subtitle">Investments</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">About</a>
+                <a href="itSolution.html">IT Solutions</a>
+                <a href="index.html">Contact</a>
+            </nav>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">
+            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+        </div>
+        <h1>Pawning Services</h1>
+        <p>Get instant cash against your gold, jewelry, and valuable assets. Secure, fast, and transparent pawning services with the best market rates.</p>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Pawning Service?</h2>
+                <p>Trusted, transparent, and customer-focused</p>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Maximum Valuation</h3>
+                            <p>Get up to 90% of the market value of your gold and jewelry. We offer the highest pawning rates in the industry.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Instant Cash</h3>
+                            <p>Walk in with your valuables and walk out with cash in hand. No waiting, no delays - immediate disbursement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Secure Storage</h3>
+                            <p>Your valuables are stored in high-security vaults with 24/7 surveillance and insurance coverage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Low Interest Rates</h3>
+                            <p>Competitive interest rates starting from 1.5% per month with flexible repayment terms.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Accept Section -->
+    <section class="accept-section-bg">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Accept</h2>
+                <p>Wide range of valuable assets accepted</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Gold Jewelry</h3>
+                    <p>All types of gold ornaments and jewelry pieces</p>
+                </div>
+
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Gold Coins & Bars</h3>
+                    <p>Investment-grade gold in all forms</p>
+                </div>
+
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Diamonds & Gems</h3>
+                    <p>Certified precious stones and gemstones</p>
+                </div>
+
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Silver Items</h3>
+                    <p>Silver jewelry, coins, and artifacts</p>
+                </div>
+
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Luxury Watches</h3>
+                    <p>Premium brand watches and timepieces</p>
+                </div>
+
+                <div class="accept-card">
+                    <div class="accept-icon">
+                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3>Antiques</h3>
+                    <p>Valuable antique items and collectibles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>How It Works</h2>
+                <p>Simple 3-step process to get instant cash</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Bring Your Valuables</h3>
+                    <p>Visit our branch with your gold, jewelry, or valuables along with your NIC</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Valuation</h3>
+                    <p>Our experts assess your items and provide the best market value instantly</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Receive Cash</h3>
+                    <p>Accept our offer and walk away with cash immediately - it's that simple</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid Section -->
+    <section class="accept-section-bg">
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800&h=600&fit=crop" alt="Gold and jewelry" class="section-image">
+                </div>
+
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Safe & Confidential</h3>
+                            <p>Complete privacy and security for all transactions with no public disclosure</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Easy Redemption</h3>
+                            <p>Redeem your items anytime by repaying the loan amount plus interest</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Flexible Terms</h3>
+                            <p>Choose from 1 month to 12 months tenure with renewal options available</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Fully Insured</h3>
+                            <p>All pawned items are fully insured against theft, fire, and natural disasters</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelector('.apply-btn').addEventListener('click', function() {
+            alert('Pawning service inquiry will open here');
+        });
+    </script>
+</body>
+</html>

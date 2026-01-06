@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Loan - Ceylon Apex Investments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #00BCD4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            color: #1e3a8a;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-subtitle {
+            color: #00BCD4;
+            font-size: 0.75rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3a8a;
+        }
+
+        .apply-btn {
+            background: #5B47E5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #4a38c4;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #7C6FD4 0%, #9D8FE5 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-icon {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.25rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+            gap: 2rem;                             /* increase gap */
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Feature Cards */
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #7C6FD4;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-card-content {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            color: #7C6FD4;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-card h3 {
+            color: #1e3a8a;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Detail Items */
+        .detail-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-icon {
+            background: #5B47E5;
+            padding: 0.75rem;
+            border-radius: 8px;
+            flex-shrink: 0;
+            height: fit-content;
+        }
+
+        .detail-item h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #666;
+        }
+
+        /* Image */
+        .section-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* Eligibility Items */
+        .eligibility-item {
+            background: #FFF7ED; /* soft yellow */
+            box-shadow: none;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 0;
+            width: 100%;
+        }
+
+        .eligibility-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem 3rem; /* vertical and horizontal gap */
+            justify-content: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .check-icon {
+            background: #FFF;
+            border: 2px solid #04af57;
+            padding: 0.5rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Background Colors */
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to bottom, white, #f9fafb);
+        }
+
+        /* SVG Icons */
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hero-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 3rem 1rem;
+            }
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+        @media (max-width: 900px) {
+            .container {
+                padding: 2rem 0.5rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+            .eligibility-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .eligibility-item {
+                padding: 1rem 0.75rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <img src="https://ucarecdn.com/4aa73b29-0572-4dbe-86c8-c9ab2ca26d53/-/format/auto/" alt="Ceylon Apex Investments">
+                <div class="logo-text">
+                    <div class="logo-title">Ceylon Apex</div>
+                    <div class="logo-subtitle">Investments</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">About</a>
+                <a href="itSolution.html">IT Solutions</a>
+                <a href="index.html">Contact</a>
+            </nav>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">
+            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        </div>
+        <h1>Customer Loan</h1>
+        <p>Flexible personal loans with competitive interest rates tailored to your financial needs. Get the funds you need to achieve your dreams.</p>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Customer Loan?</h2>
+                <p>Designed with your financial well-being in mind</p>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Competitive Rates</h3>
+                            <p>Enjoy some of the lowest interest rates in the market, starting from just 8% per annum. We ensure your repayments remain affordable throughout the loan tenure.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Fast Approval</h3>
+                            <p>Get approved within 24-48 hours with our streamlined application process. Minimal paperwork and quick disbursement to meet your urgent needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Flexible Tenure</h3>
+                            <p>Choose a repayment period that suits your budget, from 6 months up to 5 years. Adjust your loan tenure based on your financial situation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>No Hidden Charges</h3>
+                            <p>Complete transparency with no hidden fees or surprise charges. What you see is what you pay - crystal clear terms and conditions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Loan Details Section -->
+    <section class="bg-gradient">
+        <div class="container">
+            <div class="section-title">
+                <h2>Loan Details & Benefits</h2>
+            </div>
+
+            <div class="grid-2">
+                <div>
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Loan Amount</h3>
+                            <p>Borrow from LKR 50,000 up to LKR 5,000,000 based on your requirements and eligibility</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Interest Rate</h3>
+                            <p>Starting from 8% p.a. with fixed or variable rate options available</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Repayment Period</h3>
+                            <p>Flexible tenure from 6 months to 60 months with monthly installment options</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <div class="detail-icon">
+                            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Quick Processing</h3>
+                            <p>Get funds credited to your account within 3-5 working days after approval</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=600&fit=crop" alt="Growing investment" class="section-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Eligibility & Requirements</h2>
+                <p>Simple requirements to get you started</p>
+            </div>
+
+            <div class="eligibility-grid">
+                <div class="eligibility-item">
+                    <div class="check-icon">
+                        <svg fill="none" stroke="#10B981" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <p>Age: 21-65 years</p>
+                </div>
+
+                <div class="eligibility-item">
+                    <div class="check-icon">
+                        <svg fill="none" stroke="#10B981" viewBox="0 0 24 24" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <p>Valid NIC or Passport</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple navigation handler
+        document.querySelector('.apply-btn').addEventListener('click', function() {
+            alert('Application form will open here');
+        });
+    </script>
+</body>
+</html>

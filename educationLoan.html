@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Loan - Ceylon Apex Investments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: #00BCD4;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            color: #1e3a8a;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .logo-subtitle {
+            color: #00BCD4;
+            font-size: 0.75rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #1e3a8a;
+        }
+
+        .apply-btn {
+            background: #5B47E5;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: #4a38c4;
+        }
+
+        /* Hero Section - Green Theme */
+        .hero {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .hero-icon {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            color: #1e3a8a;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.25rem;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns */
+            grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+            gap: 2rem;                             /* increase gap */
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Feature Cards - Green Theme */
+        .feature-card {
+            background: #D1FAE5;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #10B981;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .feature-card-content {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            color: #047857;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+        }
+
+        .feature-card h3 {
+            color: #065F46;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: #064E3B;
+        }
+
+        /* Detail Items */
+        .detail-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-icon {
+            background: #10B981;
+            padding: 0.75rem;
+            border-radius: 8px;
+            flex-shrink: 0;
+            height: fit-content;
+        }
+
+        .detail-item h3 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-item p {
+            color: #666;
+        }
+
+        /* Image */
+        .section-image {
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        /* What Can Be Financed Cards */
+        .finance-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .finance-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .finance-icon {
+            background: #D1FAE5;
+            padding: 0.75rem;
+            border-radius: 50%;
+            width: fit-content;
+            margin-bottom: 1rem;
+        }
+
+        .finance-card p {
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Background Colors */
+        .bg-gray {
+            background: #f9fafb;
+        }
+
+        .bg-white {
+            background: white;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(to bottom, #f9fafb, white);
+        }
+
+        /* SVG Icons */
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .hero-icon svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                <div class="logo-icon">CA</div>
+                <div class="logo-text">
+                    <div class="logo-title">Ceylon Apex</div>
+                    <div class="logo-subtitle">Investments</div>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="index.html">Services</a>
+                <a href="index.html">About</a>
+                <a href="itSolution.html">IT Solutions</a>
+                <a href="index.html">Contact</a>
+            </nav>
+            <button class="apply-btn">Apply Now</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-icon">
+            <svg fill="none" stroke="white" viewBox="0 0 24 24" stroke-width="2">
+                <path d="M12 14l9-5-9-5-9 5 9 5z" />
+                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+            </svg>
+        </div>
+        <h1>Education Loan</h1>
+        <p>Invest in your future with our education loans for students and professionals. Achieve your academic dreams without financial worries.</p>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="bg-gray">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our Education Loan?</h2>
+                <p>Empowering students to reach their full potential</p>
+            </div>
+
+            <div class="grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Complete Coverage</h3>
+                            <p>Cover tuition fees, accommodation, books, equipment, and living expenses for your education journey.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Local & International</h3>
+                            <p>Finance your studies at local or international universities, colleges, and professional institutions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Flexible Repayment</h3>
+                            <p>Start repayment after completing your course or during employment with flexible installment options.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3>Low Interest Rates</h3>
+                            <p>Special student-friendly interest rates starting from 6% p.a. to make education affordable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
