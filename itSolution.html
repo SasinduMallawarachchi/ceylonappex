@@ -5,6 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT Solutions - Ceylon Apex Investments</title>
     <style>
+                /* Footer */
+                footer {
+                    background: linear-gradient(to bottom right, #1e3a8a, #0f172a);
+                    color: white;
+                    padding: 3rem 1rem;
+                }
+
+                .footer-grid {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    gap: 2rem;
+                    margin-bottom: 2rem;
+                }
+
+                @media (min-width: 768px) {
+                    .footer-grid {
+                        grid-template-columns: repeat(4, 1fr);
+                    }
+                }
+
+                .footer-brand {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    margin-bottom: 1rem;
+                }
+
+                .footer-brand img {
+                    width: 40px;
+                    height: 40px;
+                }
+
+                .footer-brand-text h4 {
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                }
+
+                .footer-brand-text p {
+                    font-size: 0.875rem;
+                    color: #93c5fd;
+                }
+
+                .footer-column h4 {
+                    font-size: 1.125rem;
+                    font-weight: bold;
+                    margin-bottom: 1rem;
+                }
+
+                .footer-column ul {
+                    list-style: none;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                }
+
+                .footer-column a {
+                    color: #bfdbfe;
+                    text-decoration: none;
+                    transition: color 0.3s;
+                }
+
+                .footer-column a:hover {
+                    color: white;
+                }
+
+                .footer-column li {
+                    color: #bfdbfe;
+                }
+
+                .social-links {
+                    display: flex;
+                    gap: 1rem;
+                }
+
+                .social-link {
+                    width: 40px;
+                    height: 40px;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    transition: background 0.3s;
+                }
+
+                .social-link:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+
+                .footer-bottom {
+                    border-top: 1px solid rgba(255, 255, 255, 0.2);
+                    padding-top: 2rem;
+                    text-align: center;
+                    color: #bfdbfe;
+                    font-size: 0.875rem;
+                }
         * {
             margin: 0;
             padding: 0;
@@ -506,7 +602,7 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <img src="https://ucarecdn.com/4aa73b29-0572-4dbe-86c8-c9ab2ca26d53/-/format/auto/" alt="Ceylon Apex Investments">
                 <div class="logo-text">
                     <div class="logo-title">Ceylon Apex</div>
@@ -770,4 +866,64 @@
         });
     </script>
 </body>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="https://ucarecdn.com/4aa73b29-0572-4dbe-86c8-c9ab2ca26d53/-/format/auto/" alt="Ceylon Apex">
+                        <div class="footer-brand-text">
+                            <h4>Ceylon Apex</h4>
+                            <p>Investments</p>
+                        </div>
+                    </div>
+                    <p style="color: #bfdbfe; font-size: 0.875rem;">Your trusted partner in financial growth and investment solutions.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="customerLoan.html">Customer Loan</a></li>
+                        <li><a href="quickLoan.html">Quick Loan</a></li>
+                        <li><a href="educationLoan.html">Education Loan</a></li>
+                        <li><a href="Pawning.html">Pawning</a></li>
+                        <li><a href="itSolution.html">IT Solutions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/164JGUUQEe/" class="social-link">
+                            <i data-lucide="facebook" width="20" height="20"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i data-lucide="linkedin" width="20" height="20"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i data-lucide="twitter" width="20" height="20"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Ceylon Apex Investments. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icon CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
 </html>

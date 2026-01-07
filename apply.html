@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for a Loan - Ceylon Apex Investments</title>
+    <style>
+                        header {
+                            background: white;
+                            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                            position: sticky;
+                            top: 0;
+                            z-index: 1000;
+                        }
+
+                        .header-container {
+                            max-width: 1200px;
+                            margin: 0 auto;
+                            padding: 1rem 2rem;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+
+                        .logo {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            text-decoration: none;
+                        }
+
+                        .logo img {
+                            width: 48px;
+                            height: 48px;
+                            object-fit: contain;
+                        }
+
+                        .logo-icon {
+                            width: 40px;
+                            height: 40px;
+                            background: #00BCD4;
+                            border-radius: 8px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: white;
+                            font-weight: bold;
+                            font-size: 1.2rem;
+                        }
+
+                        .logo-text {
+                            display: flex;
+                            flex-direction: column;
+                        }
+
+                        .logo-title {
+                            color: #1e3a8a;
+                            font-weight: bold;
+                            font-size: 1.25rem;
+                        }
+
+                        .logo-subtitle {
+                            color: #00BCD4;
+                            font-size: 0.75rem;
+                        }
+
+                        nav {
+                            display: flex;
+                            gap: 2rem;
+                        }
+
+                        .nav-links {
+                            display: flex;
+                            gap: 2rem;
+                            list-style: none;
+                        }
+
+                        .nav-links a {
+                            color: #666;
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        .nav-links a:hover {
+                            color: #1e3a8a;
+                        }
+
+                        .mobile-menu-btn {
+                            display: none;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            padding: 0.5rem;
+                        }
+
+                        @media (max-width: 767px) {
+                            .nav-links {
+                                display: none;
+                            }
+                            .nav-links.mobile-visible {
+                                display: flex;
+                                flex-direction: column;
+                                position: absolute;
+                                top: 80px;
+                                left: 0;
+                                width: 100%;
+                                background: rgba(255,255,255,0.98);
+                                box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+                                z-index: 1001;
+                                padding: 1rem 0;
+                                gap: 1.5rem;
+                            }
+                            .mobile-menu-btn {
+                                display: block;
+                            }
+                        }
+
+                        nav a {
+                            color: #666;
+                            text-decoration: none;
+                            transition: color 0.3s;
+                        }
+
+                        nav a:hover {
+                            color: #1e3a8a;
+                        }
+
+                        .apply-btn {
+                            background: #5B47E5;
+                            color: white;
+                            padding: 0.5rem 1.5rem;
+                            border-radius: 8px;
+                            border: none;
+                            cursor: pointer;
+                            font-weight: 500;
+                            transition: background 0.3s;
+                        }
+
+                        .apply-btn:hover {
+                            background: #4a38c4;
+                        }
+                .header-container {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    padding: 1rem 2rem;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    text-decoration: none;
+                }
+
+                .logo img {
+                    width: 48px;
+                    height: 48px;
+                    object-fit: contain;
+                }
+
+                .logo-icon {
+                    width: 40px;
+                    height: 40px;
+                    background: #00BCD4;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
+
+                .logo-text {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .logo-title {
+                    color: #1e3a8a;
+                    font-weight: bold;
+                    font-size: 1.25rem;
+                }
+
+                .logo-subtitle {
+                    color: #00BCD4;
+                    font-size: 0.75rem;
+                }
+
+                nav {
+                    display: flex;
+                    gap: 2rem;
+                }
+
+                .nav-links {
+                    display: flex;
+                    gap: 2rem;
+                    list-style: none;
+                }
+
+                .nav-links a {
+                    color: #666;
+                    text-decoration: none;
+                    transition: color 0.3s;
+                }
+
+                .nav-links a:hover {
+                    color: #1e3a8a;
+                }
+
+                .mobile-menu-btn {
+                    display: none;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    padding: 0.5rem;
+                }
+
+                @media (max-width: 767px) {
+                    .nav-links {
+                        display: none;
+                    }
+                    .nav-links.mobile-visible {
+                        display: flex;
+                        flex-direction: column;
+                        position: absolute;
+                        top: 80px;
+                        left: 0;
+                        width: 100%;
+                        background: rgba(255,255,255,0.98);
+                        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+                        z-index: 1001;
+                        padding: 1rem 0;
+                        gap: 1.5rem;
+                    }
+                    .mobile-menu-btn {
+                        display: block;
+                    }
+                }
+        
+
+                nav a {
+                    color: #666;
+                    text-decoration: none;
+                    transition: color 0.3s;
+                }
+
+                nav a:hover {
+                    color: #1e3a8a;
+                }
+
+                .apply-btn {
+                    background: #5B47E5;
+                    color: white;
+                    padding: 0.5rem 1.5rem;
+                    border-radius: 8px;
+                    border: none;
+                    cursor: pointer;
+                    font-weight: 500;
+                    transition: background 0.3s;
+                }
+
+                .apply-btn:hover {
+                    background: #4a38c4;
+                }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .logo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: #4169E1;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-icon svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            stroke: white;
+        }
+
+        .brand-text h1 {
+            font-weight: 700;
+            color: #1a237e;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+
+        .brand-text p {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 0;
+        }
+
+        nav {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 0.875rem;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #4169E1;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+        }
+
+        .main-content {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .form-section {
+            background-color: white;
+            padding: 3rem 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .form-section {
+                padding: 3rem;
+            }
+
+            @media (min-width: 1024px) {
+                .form-section {
+                    padding: 4rem;
+                }
+            }
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+
+        .form-header {
+            margin-bottom: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a237e;
+            margin-bottom: 0.75rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-header h2 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .form-header p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .success-message {
+            display: none;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 0.5rem;
+            color: #166534;
+            font-size: 0.875rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-family: inherit;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #4169E1;
+            border-color: transparent;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        .submitBtn {
+            background-color: #FFA500;
+            color: white;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .submitBtn:hover {
+            background-color: #FF8C00;
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-disclaimer {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+
+        .image-section {
+            display: none;
+            background: linear-gradient(135deg, #4169E1 0%, #1a237e 100%);
+            position: relative;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 3rem;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .image-section {
+                display: flex;
+            }
+        }
+
+        .image-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .image-content {
+            position: relative;
+            z-index: 2;
+            max-width: 28rem;
+            text-align: center;
+            color: white;
+        }
+
+        .image-content-space {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .icon-circle {
+            width: 5rem;
+            height: 5rem;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-circle svg {
+            width: 2.5rem;
+            height: 2.5rem;
+            stroke: white;
+        }
+
+        .image-content h3 {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+
+        .image-content > p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 0.75rem;
+            text-align: left;
+        }
+
+        .feature-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            flex-shrink: 0;
+            margin-top: 0.25rem;
+            fill: white;
+        }
+
+        .feature-text h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .feature-text p {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .decorative-pattern {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 16rem;
+            height: 16rem;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .decorative-pattern svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="https://ucarecdn.com/4aa73b29-0572-4dbe-86c8-c9ab2ca26d53/-/format/auto/" alt="Ceylon Apex Investments">
+                <div class="logo-text">
+                    <div class="logo-title">Ceylon Apex</div>
+                    <div class="logo-subtitle">Investments</div>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html">Services</a></li>
+                <li><a href="index.html">About</a></li>
+                <li><a href="itSolution.html">IT Solutions</a></li>
+                <li><a href="index.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <span style="font-size: 2rem;">☰</span>
+            </button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <div class="form-section">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h2>Apply for a Loan</h2>
+                        <p>Fill out the form below and take the first step towards achieving your financial goals. Our team will review your application and get back to you within 24 hours.</p>
+                    </div>
+
+                    <div class="success-message" id="successMessage">
+                        ✓ Application submitted successfully! We'll contact you soon.
+                    </div>
+
+                    <form id="loanForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="+94 77 234 5678">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceType">Service Type *</label>
+                            <select id="serviceType" name="serviceType" required>
+                                <option value="">Select a service</option>
+                                <option value="customer-loan">Customer Loan</option>
+                                <option value="quick-loan">Quick Loan</option>
+                                <option value="education-loan">Education Loan</option>
+                                <option value="pawning">Pawning</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="loanAmount">Loan Amount (LKR) *</label>
+                                <input type="number" id="loanAmount" name="loanAmount" required placeholder="100000">
+                            </div>
+                            <div class="form-group">
+                                <label for="employmentStatus">Employment Status *</label>
+                                <select id="employmentStatus" name="employmentStatus" required>
+                                    <option value="">Select status</option>
+                                    <option value="employed">Employed</option>
+                                    <option value="self-employed">Self Employed</option>
+                                    <option value="business-owner">Business Owner</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="monthlyIncome">Monthly Income (LKR) *</label>
+                            <input type="number" id="monthlyIncome" name="monthlyIncome" required placeholder="50000">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Additional Information</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Tell us more about your loan requirements..."></textarea>
+                        </div>
+
+                        <button class="submitBtn" type="submit">Submit Application</button>
+
+                        <p class="form-disclaimer">
+                            By submitting this form, you agree to our terms and conditions and privacy policy.
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <div class="image-section">
+                <div class="decorative-pattern">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FFFFFF" d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.8C64.8,56.4,53.8,69,40.3,76.8C26.8,84.6,11,87.6,-4.4,85.3C-19.8,83,-39.6,75.4,-54.5,64.1C-69.4,52.8,-79.4,37.8,-83.8,21.4C-88.2,5,-87,-12.8,-80.5,-28.4C-74,-44,-62.2,-57.4,-48.1,-64.7C-34,-72,-17,-73.2,-0.7,-71.9C15.6,-70.6,31.2,-66.8,44.7,-76.4Z" transform="translate(100 100)"></path>
+                    </svg>
+                </div>
+
+                <div class="image-content">
+                    <div class="image-content-space">
+                        <div class="icon-circle">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                            </svg>
+                        </div>
+
+                        <h3>Your Trusted Financial Partner</h3>
+
+                        <p>With years of experience in the financial services industry, Ceylon Apex Investments has become a trusted name in Sri Lanka for loan services and investment solutions.</p>
+
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div class="feature-text">
+                                    <h4>Quick Approval Process</h4>
+                                    <p>Get approved within 24 hours</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div class="feature-text">
+                                    <h4>Competitive Interest Rates</h4>
+                                    <p>Flexible terms tailored to your needs</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <svg class="feature-icon" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <div class="feature-text">
+                                    <h4>Expert Financial Guidance</h4>
+                                    <p>24/7 professional support services</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+                // Mobile menu toggle for responsive header
+                const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                const navLinks = document.querySelector('.nav-links');
+                if (mobileMenuBtn && navLinks) {
+                    mobileMenuBtn.addEventListener('click', function() {
+                        navLinks.classList.toggle('mobile-visible');
+                    });
+                }
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                serviceType: document.getElementById('serviceType').value,
+                loanAmount: document.getElementById('loanAmount').value,
+                employmentStatus: document.getElementById('employmentStatus').value,
+                monthlyIncome: document.getElementById('monthlyIncome').value,
+                message: document.getElementById('message').value
+            };
+
+            console.log('Form submitted:', formData);
+
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+
+            this.reset();
+
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
