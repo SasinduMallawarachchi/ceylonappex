@@ -623,6 +623,17 @@
             height: 100%;
         }
     </style>
+    <script src="script.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "RmXUm0Cv8_Qf6t5si",
+        });
+    })();
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -715,7 +726,7 @@
                             <textarea id="message" name="message" rows="4" placeholder="Tell us more about your loan requirements..."></textarea>
                         </div>
 
-                        <button class="submitBtn" type="submit">Submit Application</button>
+                        <button class="submitBtn" type="submit" onclick="sendEmail()">Submit Application</button>
 
                         <p class="form-disclaimer">
                             By submitting this form, you agree to our terms and conditions and privacy policy.
