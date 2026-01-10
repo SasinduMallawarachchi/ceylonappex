@@ -662,6 +662,17 @@
             }
         }
     </style>
+    <script src="script.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init({
+            publicKey: "RmXUm0Cv8_Qf6t5si",
+        });
+    })();
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -836,16 +847,16 @@
                     <h3>Ready to Get Started?</h3>
                     <p>Apply for a loan today and take the first step towards achieving your financial goals.</p>
                     <form class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="tel" placeholder="Phone Number" required>
-                        <select required>
+                        <input type="text" id="fullName" placeholder="Your Name" required>
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                        <select id="serviceType" required>
                             <option>Select Service</option>
                             <option>Customer Loan</option>
                             <option>Quick Loan</option>
                             <option>Education Loan</option>
                             <option>Pawning</option>
                         </select>
-                        <button type="submit" class="btn-submit">Submit Application</button>
+                        <button type="submit" class="btn-submit" onclick="getstartFormSubmit()">Submit Application</button>
                     </form>
                 </div>
             </div>

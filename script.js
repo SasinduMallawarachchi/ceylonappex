@@ -12,3 +12,11 @@ function sendEmail() {
     emailjs.send("service_qv3xbkk","template_7hsszwn",params)
 }
 
+function getstartFormSubmit(){
+    let params = {
+        fullName: document.getElementById("fullName").value,
+        phone: document.getElementById("phone").value,
+        serviceType: document.getElementById("serviceType").value,
+    }
+    emailjs.send("service_qv3xbkk","template_7hsszwn",params)
+}
