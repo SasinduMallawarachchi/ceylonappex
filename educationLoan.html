@@ -221,11 +221,21 @@
             border-radius: 12px;
             border-left: 4px solid #10B981;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-7px);
+        }
+
+        .feature-card:hover h3 {
+            color: #10b981;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: #10b981;
         }
 
         .feature-card-content {

@@ -344,11 +344,21 @@
             border-radius: 12px;
             border-left: 4px solid #F59E0B;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-7px);
+        }
+
+        .feature-card:hover h3 {
+            color: #10b981;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: #10b981;
         }
 
         .feature-card-content {
@@ -377,6 +387,7 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            cursor: pointer;
         }
 
         .detail-icon {
@@ -385,6 +396,14 @@
             border-radius: 8px;
             flex-shrink: 0;
             height: fit-content;
+        }
+
+        .detail-item:hover .detail-icon {
+            background: #F59E0B;
+        }
+        .detail-item:hover .detail-icon svg {
+            transform: scale(1.2);
+            transition: all 0.3s;
         }
 
         .detail-item h3 {
@@ -425,6 +444,13 @@
             gap: 1rem;
             min-width: 0;
             width: 100%;
+            cursor: pointer;
+        }
+
+        .eligibility-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            background: #FFEDD5; /* slightly darker yellow */
+            transition: all 0.5s;
         }
 
         .check-icon {

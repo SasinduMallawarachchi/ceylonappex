@@ -365,11 +365,21 @@
             border-radius: 12px;
             border-left: 4px solid #00BCD4;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-7px);
+        }
+
+        .feature-card:hover h3 {
+            color: #10b981;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: #10b981;
         }
 
         .feature-card-content {
@@ -398,6 +408,20 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            cursor: pointer;
+        }
+
+        .detail-item:hover .detail-icon {
+            background: #10b981;
+        }
+
+        .detail-item:hover h3 {
+            color: #10b981;
+        }
+
+        .detail-item:hover .detail-icon svg {
+            transform: scale(1.2);
+            transition: all 0.3s;
         }
 
         .detail-icon {
@@ -435,6 +459,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
+            cursor: pointer;
         }
 
         .why-icon {
@@ -452,6 +477,17 @@
         .why-icon svg {
             width: 36px;
             height: 36px;
+        }
+
+        .why-card:hover {
+            transform: scale(1.05);
+            transition: all 0.3s;
+        }
+
+        .why-card:hover .why-icon {
+            background: #10b981;
+            transform: rotate(-45deg);
+            transition: all 0.3s;
         }
 
         .why-card h3 {

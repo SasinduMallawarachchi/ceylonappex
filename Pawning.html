@@ -320,11 +320,21 @@
             border-radius: 12px;
             border-left: 4px solid #7C3AED;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .feature-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-7px);
+        }
+
+        .feature-card:hover h3 {
+            color: #10b981;
+        }
+
+        .feature-card:hover .feature-icon {
+            color: #10b981;
         }
 
         .feature-card-content {
@@ -397,6 +407,7 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
+            cursor: pointer;
         }
 
         .detail-icon {
@@ -405,6 +416,14 @@
             border-radius: 8px;
             flex-shrink: 0;
             height: fit-content;
+        }
+
+        .detail-item:hover .detail-icon {
+            background: #5039e6e0;
+        }
+        .detail-item:hover .detail-icon svg {
+            transform: scale(1.1);
+            transition: all 0.3s;
         }
 
         .detail-item h3 {
@@ -428,6 +447,7 @@
         /* Step Cards */
         .step-card {
             text-align: center;
+            cursor: pointer;
         }
 
         .step-number {
@@ -448,6 +468,11 @@
             color: #1e3a8a;
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
+        }
+
+        .step-card:hover .step-number {
+            transform: scale(1.1);
+            transition: all 0.3s;
         }
 
         .step-card p {
