@@ -193,7 +193,7 @@
             padding-bottom: 4px;
         }
 
-        .nav-links a::after {
+        .nav-links .underline::after {
             content: "";
             position: absolute;
             left: 0;
@@ -207,8 +207,8 @@
         .nav-links a:hover {
             color: #3b82f6;
         }
-        
-        .nav-links a:hover::after { 
+
+        .nav-links .underline:hover::after { 
             width: 100%; /* animate underline expansion */ 
         }
 
@@ -567,11 +567,11 @@
                 </div>
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="itSolution.html">IT Solutions</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="index.html" class="underline">Home</a></li>
+                <li><a href="index.html#services" class="underline">Services</a></li>
+                <li><a href="index.html#about" class="underline">About</a></li>
+                <li><a href="itSolution.html" class="underline">IT Solutions</a></li>
+                <li><a href="index.html#contact" class="underline">Contact</a></li>
                 <li><a href="apply.html"><button class="apply-btn">Apply Now</button></a></li>
             </ul>
             <button class="mobile-menu-btn">
