@@ -180,18 +180,36 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #666;
+            position: relative;
             text-decoration: none;
+            color: #4b5563;
             transition: color 0.3s;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
-            color: #1e3a8a;
+            color: #3b82f6;
+        }
+        
+        .nav-links a:hover::after { 
+            width: 100%; /* animate underline expansion */ 
         }
 
         .mobile-menu-btn {
@@ -369,10 +387,20 @@
             align-items: flex-start;
             min-width: 320px;
             transition: box-shadow 0.3s;
+            cursor: pointer;
         }
 
         .accept-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .accept-card:hover h3 {
+            color: #10b981;
+        }
+
+        .accept-card:hover i {
+            transform: scale(1.2);
+            transition: all 0.3s;
         }
 
         .accept-icon {
@@ -389,6 +417,12 @@
             width: 32px;
             height: 32px;
         }
+
+        .accept-icon i {
+        font-size: 32px;
+        color: #7C3AED; /* Indigo */
+        }
+
 
         .accept-card h3 {
             color: #000000;
@@ -424,6 +458,9 @@
         .detail-item:hover .detail-icon svg {
             transform: scale(1.1);
             transition: all 0.3s;
+        }
+        .detail-item:hover h3 {
+            color: #10b981;
         }
 
         .detail-item h3 {
@@ -545,6 +582,7 @@
     </style>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -661,9 +699,7 @@
             <div class="grid-3">
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-ring"></i>
                     </div>
                     <h3>Gold Jewelry</h3>
                     <p>All types of gold ornaments and jewelry pieces</p>
@@ -671,9 +707,7 @@
 
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-coins"></i>
                     </div>
                     <h3>Gold Coins & Bars</h3>
                     <p>Investment-grade gold in all forms</p>
@@ -681,9 +715,7 @@
 
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-regular fa-gem"></i>
                     </div>
                     <h3>Diamonds & Gems</h3>
                     <p>Certified precious stones and gemstones</p>
@@ -691,9 +723,7 @@
 
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-crown"></i>
                     </div>
                     <h3>Silver Items</h3>
                     <p>Silver jewelry, coins, and artifacts</p>
@@ -701,9 +731,7 @@
 
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-clock"></i>
                     </div>
                     <h3>Luxury Watches</h3>
                     <p>Premium brand watches and timepieces</p>
@@ -711,9 +739,7 @@
 
                 <div class="accept-card">
                     <div class="accept-icon">
-                        <svg fill="none" stroke="#7C3AED" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
+                        <i class="fa-solid fa-tv"></i>
                     </div>
                     <h3>Antiques</h3>
                     <p>Valuable antique items and collectibles</p>

@@ -70,13 +70,30 @@
         }
 
         .nav-links a {
+            position: relative;
             text-decoration: none;
             color: #4b5563;
             transition: color 0.3s;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
             color: #3b82f6;
+        }
+
+        .nav-links a:hover::after { 
+            width: 100%; /* animate underline expansion */ 
         }
 
         .btn-primary {
@@ -674,6 +691,9 @@
                 display: block;
             }
         }
+    html {
+      scroll-behavior: smooth;
+    }
     </style>
     <script src="script.js"></script>
     <script type="text/javascript"
@@ -688,6 +708,17 @@
     </script>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+        });
+    </script>
+
 </head>
 <body>
     <!-- Navigation -->

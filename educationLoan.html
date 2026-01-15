@@ -84,18 +84,36 @@
 
         .nav-links {
             display: flex;
+            align-items: center;
             gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
-            color: #666;
+            position: relative;
             text-decoration: none;
+            color: #4b5563;
             transition: color 0.3s;
+            padding-bottom: 4px;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
-            color: #1e3a8a;
+            color: #3b82f6;
+        }
+        
+        .nav-links a:hover::after { 
+            width: 100%; /* animate underline expansion */ 
         }
 
         .mobile-menu-btn {
