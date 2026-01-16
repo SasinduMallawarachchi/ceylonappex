@@ -9,7 +9,7 @@ function sendEmail() {
         monthlyIncome: document.getElementById("monthlyIncome").value,
         message: document.getElementById("message").value,
     }
-    emailjs.send("service_qv3xbkk","template_7hsszwn",params)
+    emailjs.send("service_8yreysi","template_7hsszwn",params)
 }
 
 function getstartFormSubmit(){
@@ -18,5 +18,5 @@ function getstartFormSubmit(){
         phone: document.getElementById("phone").value,
         serviceType: document.getElementById("serviceType").value,
     }
-    emailjs.send("service_qv3xbkk","template_7hsszwn",params)
+    emailjs.send("service_8yreysi","template_7hsszwn",params)
 }
